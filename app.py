@@ -73,10 +73,10 @@ def load_data():
         product_name = request.form.get("productName")
         file_to_be_scraped = request.files['fileinput']
         # NOTE: the line below is commented out for the demo; uncomment for actual use
-        # file_to_be_scraped.save(secure_filename("product_links.csv"))
+        file_to_be_scraped.save(secure_filename("product_links.csv"))
         models_trained = True
         # NOTE: the line below is commented out for the demo; uncomment for actual use
-        # RunBefore(product_name=product_name.strip())
+        RunBefore(product_name=product_name.strip())
         global features_set
         features_set = DataFetcher().get_features_set()
         return redirect(url_for("index"))
