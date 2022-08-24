@@ -20,7 +20,7 @@ import os
 class TopicModellingSearchingTop2Vec:
 
     def __init__(self, filepath: str, speed: str='deep-learn', models_already_trained: bool=True, run_repl: bool=True):
-        os.environ["TFHUB_CACHE_DIR"] = "/var/folders/cn/dtb98nld0j7g5gfysyrv8y3m0000gp/T/tfhub_modules/063d866c06683311b44b4992fd46003be952409c"
+        # os.environ["TFHUB_CACHE_DIR"] = "/var/folders/cn/dtb98nld0j7g5gfysyrv8y3m0000gp/T/tfhub_modules/063d866c06683311b44b4992fd46003be952409c"
         self.data_df = self.load_data(filepath)
         self.documents = self.generate_document_list(self.data_df)
 
@@ -29,7 +29,7 @@ class TopicModellingSearchingTop2Vec:
 
         if not models_already_trained:
             model = self.generate_model(processed_documents, speed)
-            model.save("main_model")
+            model.save("topic_modelling/main_model")
             print(f"Number of topics: {model.get_num_topics()}")
         else:
             self.model = Top2Vec.load('topic_modelling/main_model')
@@ -90,7 +90,7 @@ class TopicModellingSearchingTop2Vec:
         return list(map(self.remove_stopwords_and_punctuation, documents))
     
 
-    def generate_model(self, documents: list, speed: str, min_count: int=50):
+    def generate_model(self, documents: list, speed: str, min_count: int=10):
         """
         Takes 3 inputs:
         - documents: a list of strings (documents), which is the preprocessed
@@ -118,8 +118,11 @@ class TopicModellingSearchingTop2Vec:
         Returns a list of the top customer reviews that are most closely related
         to the search query (from keywords)
         """
-        docs, document_scores, document_ids = model.search_documents_by_keywords(keywords=keywords, num_docs=num_docs)
         result = []
-        for _, score, doc_id in zip(docs, document_scores, document_ids):
-            result.append((score, unprocessed_documents[doc_id]))
-        return result
+        try:
+            docs, document_scores, document_ids = model.search_documents_by_keywords(keywords=keywords, num_docs=num_docs)
+            for _, score, doc_id in zip(docs, document_scores, document_ids):
+                result.append((score, unprocessed_documents[doc_id]))
+            return result
+        except:
+            return result

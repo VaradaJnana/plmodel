@@ -301,7 +301,7 @@ class WebScraper:
         df = df.drop_duplicates(subset=['productID', 'productName', 'productStarRating', 'globalStarRatingCount',\
             'reviewStars', 'reviewHeader', 'reviewText', 'reviewHelpfulCount', 'verifiedPurchase'])
         # df = df.dropna()
-        df.to_csv('../templates/static/data-files/review_data.csv')
+        df.to_csv('templates/static/data-files/review_data.csv')
 
     def scrape(self) -> None:
         """

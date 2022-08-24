@@ -15,6 +15,7 @@ class ImprovementExtractor:
 
         data_df = self.load_data(filepath)
         improvement_areas = self.select_improvement_areas(data_df, num_areas)
+        print(improvement_areas)
         self.result = self.get_search_results(improvement_areas=improvement_areas)
         self.export_data(result=self.result)
 
