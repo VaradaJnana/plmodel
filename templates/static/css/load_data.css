@@ -1,0 +1,109 @@
+
+body {
+    text-align: center;
+}
+
+.colored-section {
+    color: white;
+}
+
+
+/* Title section */
+
+#title {
+    background-color: #22577A;
+    padding: 3%;
+}
+
+.title-text-container {
+    margin-left: 15%;
+    text-align: left;
+}
+
+.title {
+    font-family: 'Montserrat';
+    font-weight: 900;
+    padding: 5%;
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+.subheading {
+    font-size: 2rem;
+    padding-top: 0;
+}
+
+.title-logo-img {
+    /* text-align: center; */
+    margin-right: 35%;
+}
+
+
+
+/* Load Data section */
+
+#load-data {
+    background-color: white;
+    padding: 3%;
+}
+
+.content-container {
+    font-family: 'Ubuntu';
+    padding: 0 12.5%;
+}
+
+.section-heading {
+    font-family: 'Montserrat';
+    font-weight: bold;
+    color: #317bac;
+    padding: 2%;
+    margin-bottom: 2%;
+}
+
+.file-description {
+    text-align: left;
+}
+
+.file-format-img {
+    width: 100%;
+}
+
+.file-form {
+    padding-top: 2%;
+}
+
+.product-name {
+    width: 50%;
+}
+
+
+/* Footer section */
+
+#footer {
+    background-color: #22577A;
+    padding: 2%;
+    font-family: 'Montserrat';
+}
+
+/* .footer-tagline {
+    color: white;
+} */
+
+.footer-img {
+    width: 30%;
+    margin-bottom: 3%;
+}
+
+.footer-credits {
+    color: white;
+    font-size: 0.9rem;
+}
+
+
+/* Media queries: */
+
+@media (max-width: 767px) {
+    .title-text-container {
+        text-align: center;
+    }
+}

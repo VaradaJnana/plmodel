@@ -1,0 +1,397 @@
+
+body {
+    text-align: center;
+}
+
+.colored-section {
+    color: white;
+}
+
+.section-header {
+    font-family: 'Montserrat';
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 1.5;
+}
+
+.table-header {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.left-list {
+    text-align: left;
+}
+
+.underline-text {
+    text-decoration: underline;
+}
+
+
+/* Navbar section */
+
+.navbar {
+    padding: 0;
+    background-color: #153a52;
+}
+
+.navbar-container {
+    /* margin: 0; */
+    flex-direction: column;
+}
+
+.navbar-left {
+    text-align: left;
+}
+
+.navbar-right {
+    text-align: right;
+    padding-top: 1%;
+}
+
+.navbar-brand {
+    font-family: 'Ubuntu';
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.navbar-img {
+    width: 40%;
+}
+
+.offcanvas {
+    background-color: #153a52;
+    text-align: left;
+}
+
+.offcanvas-title {
+    color: white;
+    font-family: 'Montserrat';
+    font-size: 1.5rem;
+    margin-left: 3.5%;
+}
+
+.nav-item {
+    padding: 0 15px;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+    font-family: 'Montserrat';
+    font-weight: 400;
+}
+
+
+/* Title section */
+
+#title {
+    background-color: #22577A;
+    padding: 3%;
+}
+
+.title-text-container {
+    margin-left: 15%;
+    text-align: left;
+}
+
+.title {
+    font-family: 'Montserrat';
+    font-weight: 900;
+    padding: 5%;
+    font-size: 3rem;
+    line-height: 1.5;
+}
+
+.subheading {
+    font-size: 2rem;
+    padding-top: 0;
+}
+
+.title-logo-img {
+    /* text-align: center; */
+    margin-right: 35%;
+}
+
+
+/* Top 20 attributes section */
+
+#top20-attributes {
+    background-color: white;
+    padding: 3%;
+    font-family: 'Ubuntu';
+}
+
+.top-20-attributes-header {
+    color: #317bac;
+}
+
+.top-attributes-description-card {
+    margin: 0 30%;
+}
+
+.attribute-list-container {
+    padding: 2% 5% 3%;
+}
+
+
+
+/* Product-Attribute Descriptions section */
+
+#product-attribute-descriptions {
+    background-color: #38A3A5;
+    padding: 3%;
+    font-family: 'Ubuntu';
+}
+
+.p-a-d-description-card {
+    margin: 0 30%;
+}
+
+.p-a-d-card-body {
+    background-color: #38A3A5;
+    text-align: left;
+    border-radius: 1.5%;
+}
+
+.p-a-d-select-container {
+    margin: 2% 20% 1%;
+    padding: 1%;
+}
+
+.p-a-d-button {
+    margin-bottom: 3%;
+}
+
+.p-a-d-product-card {
+    margin: 2% 20% 1%;
+}
+
+.p-a-d-product-card-body {
+    border-radius: 1%;
+}
+
+.product-card-title {
+    margin-bottom: 5%;
+}
+
+.product-card-section {
+    margin-bottom: 5%;
+}
+
+.feature-score-description {
+    margin: 0 15% 5%;
+    text-align: center;
+}
+
+.product-card-section:last-child {
+    margin-bottom: 0;
+}
+
+.feature-description-feature {
+    font-weight: bold;
+    /* text-decoration: underline; */
+    /* color: black; */
+}
+
+.feature-score-container {
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+/* Product ranker section */
+
+#product-ranker {
+    background-color: white;
+    padding: 3%;
+    font-family: 'Ubuntu';
+}
+
+.product-ranker-title {
+    color: #38A3A5;
+}
+
+.feature-dataList-container {
+    margin: 2% 20% 1%;
+    padding: 1%;
+    text-align: left;
+}
+
+.product-ranker-form {
+    text-align: center;
+}
+
+.product-ranker-button {
+    margin-top: 2%;
+}
+
+.try-again-text {
+    color: red;
+}
+
+.chosen-feature {
+    color: #38A3A5;
+}
+
+.product-ranker-description-card {
+    margin: 0 30% 2%;
+
+}
+
+.product-ranker-card-body {
+    text-align: left;
+    border-radius: 1.5%;
+}
+
+.sentiment-score-container {
+    display: inline;
+}
+
+.colorbar-img {
+    width: 70%;
+}
+
+.triangle-img {
+    width: 4%;
+    position: relative;
+    /* bottom: 500%; */
+}
+
+
+
+/* Market Improvement Areas section */
+
+#market-improvement-areas {
+    background-color: #57CC99;
+    padding: 3%;
+    font-family: 'Ubuntu';
+}
+
+.improvement-areas-description-card {
+    margin-bottom: 2%;
+}
+
+.improvement-areas-card-body {
+    background-color: #57CC99;
+}
+
+.market-improvement-areas-card {
+    margin: 0 30% 2%;
+    color: black;
+}
+
+.market-improvement-areas-card-body {
+    text-align: left;
+}
+
+
+/* Customer Reviews Searching Tool section */
+
+#searching-customer-reviews {
+    background-color: white;
+    padding: 3%;
+    font-family: 'Ubuntu';
+}
+
+.searching-customer-reviews-title {
+    color: #57CC99;
+}
+
+.smaller-text {
+    font-size: 0.85rem;
+}
+
+.form-container {
+    margin: 2% 20% 1%;
+    padding: 1%;
+    text-align: left;
+}
+
+.display-search-query {
+    color: #57CC99;
+}
+
+.review-search-results {
+    margin: 0 20%;
+    text-align: left;
+}
+
+
+/* Wordclouds Searching Tool section */
+
+#searching-wordclouds {
+    background-color: #38A3A5;
+    padding: 3%;
+    font-family: 'Ubuntu';
+}
+
+.wordcloud-searching-description-card {
+    margin-bottom: 2%;
+}
+
+.wordcloud-searching-card-body {
+    background-color: #38A3A5;
+    text-align: center;
+}
+
+.wordcloud-searching-card-body ul {
+    text-align: left;
+}
+
+.wordcloud-img {
+    width: 80%;
+    margin: 0 2%;
+}
+
+
+
+/* Mindmap section */
+
+#mindmap {
+    background-color: white;
+    padding: 3%;
+    font-family: 'Ubuntu'
+}
+
+.mindmap-title {
+    color: #38A3A5;
+}
+
+.mindmap-img {
+    width: 80%;
+    margin: 2%;
+}
+
+
+
+/* Footer section */
+
+#footer {
+    background-color: #22577A;
+    padding: 2%;
+    font-family: 'Montserrat';
+}
+
+/* .footer-tagline {
+    color: white;
+} */
+
+.footer-img {
+    width: 30%;
+    margin-bottom: 3%;
+}
+
+.footer-credits {
+    color: white;
+    font-size: 0.9rem;
+}
+
+
+
+/* Media queries: */
+
+@media (max-width: 767px) {
+    .title-text-container {
+        text-align: center;
+    }
+}

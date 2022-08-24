@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Font Awesome-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet">
+
+    <!-- Importing some fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Ubuntu&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-dark sticky-top">
+        <div class="container-fluid navbar-container">
+            <div class="row">
+                <div class="col-6 navbar-left">
+                    <a class="navbar-brand" href="#"><img class="navbar-img" src="../static/images/TDL_Logo.png" alt="TATA Digital"></a>
+                </div>
+                <div class="col-6 navbar-right">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+            
+            
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Choose a section below:</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#top20-attributes">Top 20 Attributes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#product-attribute-descriptions">Product-Attribute Descriptions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#product-ranker">Product Ranker</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#market-improvement-areas">Market Improvement Areas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#searching-customer-reviews">Customer Review Searching</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#searching-wordclouds">Wordcloud Searching</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#mindmap">Knowledge Mindmap</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Scrolling to latest post request section -->
+    <div>
+        {% if scroll %}
+        <script>
+            document.location.hash = '{{ scroll }}';
+        </script>
+        {% endif %}
+    </div>
+
+    <!-- Title section -->
+    <section id="title" class="colored-section">
+        <div class="row">
+            <div class="col-lg-8 col-md-6">
+                <div class="title-text-container">
+                    <h1 class="title">Private Label Products</h1>
+                    <h2 class="title subheading">Data Analysis (AI) Portal</h2>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <img class="title-logo-img" src="../static/images/TataNeu_logo.png" alt="TataNeu logo image">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Top 20 Attributes section -->
+    <section id="top20-attributes">
+        <div class="container">
+            <h2 class="section-header top-20-attributes-header">Most Relevant Product Features</h1>
+            <div class="card top-attributes-description-card">
+                <div class="card-body">
+                    The top product features that customers care about are listed below!
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 attribute-list-container">
+                    <h3>Top Attributes from Customer Reviews</h3>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold"><span class="table-header">Attribute Name</span></div>
+                            </div>
+                            <div class="table-header">Relevance Score</div>
+                        </li>
+                    </ul>
+                    <ol class="list-group list-group-numbered">
+                        {% for entry in top_twenty_attributes %}
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">{{ entry[0] }}</div>
+                                </div>
+                                <span class="badge bg-primary rounded-pill">{{ entry[1] }}</span>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+                <div class="col-lg-6 col-md-6 attribute-list-container">
+                    <h3>Attributes Listed by Amazon</h2>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto">
+                                <div class="fw-bold"><span class="table-header">Attribute Name</span></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ol class="list-group list-group-numbered">
+                        {% for attribute in amazon_suggested_attributes %}
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                    <div class="fw-bold">{{ attribute }}</div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Product-Attribute Descriptions section -->
+    <section id="product-attribute-descriptions" class="colored-section">
+        <div class="container">
+            <h1 class="section-header">Product-Attribute Descriptions</h1>
+            <div class="card p-a-d-description-card">
+                <div class="card-body p-a-d-card-body">
+                    For a chosen product, extract insights into:
+                    <ul>
+                        <li>Top features customers care about</li>
+                        <li>How customers describe the product for each of these features</li>
+                        <li>Sentiment scores for the product for each of these features</li>
+                    </ul>
+                </div>
+            </div>
+            <form action="/dashboard" method="POST">
+                <div class="p-a-d-select-container">
+                    <select name="p-a-d-productId" class="form-select" aria-label="Default select example">
+                        <option selected>Choose a product from here</option>
+                        {% for product_id, product_name in products_list %}
+                            <option value={{product_id}}> {{ product_id }}  {{ product_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="btn btn-outline-light p-a-d-button" type="submit">Get Product Info</button>
+            </form>
+            {% if p_a_d_product_info != "None" %}
+                <div class="card p-a-d-description-card p-a-d-product-card">
+                    <div class="card-body p-a-d-card-body p-a-d-product-card-body">
+                        <h3 class="product-card-title">{{ p_a_d_product_info['productName'] }}</h3>
+
+                        <!-- <div class="product-card-section">
+                            <h4>Features Customers Care Most About:</h4>
+                            <p>{{ p_a_d_product_info['topFeatures'] }}</p>
+                        </div> -->
+
+                        <div class="product-card-section">
+                            <h4>Feature Descriptions:</h4>
+                            {% for feature in p_a_d_product_info['featureDescriptions'] %}
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2">
+                                        <p><span class="feature-description-feature">{{ feature }}</span></p>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10">
+                                        <p>{{ p_a_d_product_info['featureDescriptions'][feature] }}</p>
+                                    </div>
+                                </div>
+                                <!-- <p><span class="feature-description-feature">{{ feature }}</span>: {{ p_a_d_product_info['featureDescriptions'][feature] }}</p> -->
+                            {% endfor %}
+                        </div>
+
+                        <div class="product-card-section">
+                            <h4>Feature Scores:</h4>
+                            <p class="feature-score-description">The features below have been ranked in decreasing order of relevance: features that customers found most relevant for the chosen product are on top, and that relevance decreases as we go down in the list. <br><br>The score mentioned is the sentiment score (i.e. it measures how much the customers liked/disliked the product with respect to the specific feature)</p>
+                            {% for feature in p_a_d_product_info['featureDescriptions'] %}
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-2">
+                                        <p>{{ feature }}</p>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2">
+                                        {{ p_a_d_product_info['featureScores'][feature][0] }}
+                                    </div>
+                                    <div class="col-lg-8 col-md-8">
+                                        <div class="feature-score-container">
+                                            <img class="colorbar-img" src="../static/images/sentiment_score_colorbar.png">
+                                            <br>
+                                            <img style="{{ p_a_d_product_info['featureScores'][feature][1] }}" class="triangle-img" src="../static/images/triangle.png">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <p>{{ feature }}: {{ p_a_d_product_info['featureScores'][feature] }}</p> -->
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+    
+    <!-- Product Ranker section -->
+    <section id="product-ranker">
+        <div class="container">
+            <h1 class="section-header product-ranker-title">Product Ranker</h1>
+            <div class="card top-attributes-description-card">
+                <div class="card-body">
+                    Select a product feature to rank products based on customer reactions to the feature!
+                    <ul class="left-list">
+                        <li>Products are ranked based on the sentiment score of the picked feature (i.e. the score depicting customers' views on the product with respect to the given feature)</li>
+                        <li><span class="underline-text">Note</span>: We do not rank all of the products; we only rank the products for which the feature you have chosen was identified as being amongst the top 10 most relevant features.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="feature-dataList-container">
+                <label for="featureDataList" class="form-label">Select a feature (your options will show when you click in the search box):</label>
+                <form class="product-ranker-form" action="/dashboard" method="POST">
+                    <input class="form-control" list="features" id="featureDataList" placeholder="Type to search..." name="productRankerFeature" autocomplete="off">
+                    <datalist id="features">
+                        {% for feature in features_set %}
+                            <option value={{feature}}>
+                        {% endfor %}
+                    </datalist>
+                    <button class="btn btn-outline-dark product-ranker-button" type="submit">Select Feature</button>
+                </form>
+            </div>
+            {% if product_rank_error %}
+                <p class="try-again-text">An error occurred with this feature... Try again!</p>
+            {% endif %}
+
+
+            {% if product_ranker_info != "None" and not product_rank_error %}
+                <h3 class="chosen-feature">Your chosen feature: {{ chosen_feature }}</h3>
+                
+                <table class="table table-hover w-auto">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%" scope="col">Rank</th>
+                            <th style="width: 10%" scope="col">Product ID</th>
+                            <th style="width: 30%" scope="col">Product Name</th>
+                            <th style="width: 20%" scope="col">Descriptive Words</th>
+                            <th style="width: 30%" scope="col">Sentiment Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in product_ranker_info: %}
+                            <tr>
+                                <th scope="row">{{ entry[0] + 1 }}</th>
+                                <td>{{ entry[1][0] }}</td>
+                                <td>{{ entry[1][1] }} <a href="{{ entry[1][5] }}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i></a></td>
+                                <td>{{ entry[1][2] }}</td>
+                                <td>
+                                    <div class="sentiment-score-container">
+                                        {{ entry[1][3] }}
+                                        <br>
+                                        <img class="colorbar-img" src="../static/images/sentiment_score_colorbar.png">
+                                        <br>
+                                        <img style="{{ entry[1][4] }}" class="triangle-img" src="../static/images/triangle.png">
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </section>
+    
+    <!-- Market Improvement Areas section -->
+    <section id="market-improvement-areas" class="colored-section">
+        <div class="container">
+            <h1 class="section-header">Market Improvement Areas</h1>
+            <div class="card p-a-d-description-card improvement-areas-description-card">
+                <div class="card-body p-a-d-card-body improvement-areas-card-body">
+                    See insights into top market-wide improvement areas:
+                    <ul>
+                        <li>Features with which customers are generally dissatisfied</li>
+                        <li>Customer reviews pertaining to the feature</li>
+                    </ul>
+                </div>
+            </div>
+            {% for idx, entry in improvement_areas_info: %}
+                <div class="card market-improvement-areas-card">
+                    <div class="card-body market-improvement-areas-card-body">
+                        <p>Improvement Area {{ idx + 1 }}</p>
+                        <h3 class="product-card-title">{{ entry[0] }}</h3>
+                        <h4>Customer Reviews:</h4>
+                        {% for review in entry[1]: %}
+                            <p>{{ review }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            <form action="/improvements" method="post">
+                <button class="btn btn-light" type="submit">Open CSV file with all Improvements</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Searching Tool: Customer Reviews section -->
+    <section id="searching-customer-reviews">
+        <div class="container">
+            <h1 class="section-header searching-customer-reviews-title">Customer Review Searching Tool</h1>
+            <div class="card top-attributes-description-card">
+                <div class="card-body">
+                    <p>Enter a search query to get the top related customer reviews:</p>
+                    <p class="smaller-text">Rather than complete sentences, your query should be based on keywords. <br> For example, to see reviews on customer service, just search <em>customer service</em></p>
+                </div>
+            </div>
+            <div class="form-container">
+                <form action="/dashboard" method="post">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Show me reviews about:</span>
+                        <input type="text" class="form-control" placeholder="Search Query" name="customerReviewSearchQuery" autocomplete="off">
+                        <button class="btn btn-outline-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+            </div>
+
+            {% if review_search_result != "None": %}
+                {% if review_search_result != "Some word/words in your query were not present in even a single review": %}
+                    <h3 class="display-search-query">Your search query: {{ review_search_query }}</h3>
+                    <div class="card review-search-results">
+                        <div class="card-body">
+                            {% for review in review_search_result: %}
+                                <p>{{ review }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else: %}
+                    <p class="try-again-text">{{ review_search_result }}</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Searching Tool: Wordclouds section -->
+    <section id="searching-wordclouds" class="colored-section">
+        <div class="container">
+            <h1 class="section-header">Wordcloud Searching Tool</h1>
+            <div class="card p-a-d-description-card wordcloud-searching-description-card">
+                <div class="card-body p-a-d-card-body wordcloud-searching-card-body">
+                    <p>Enter a search query to generate related wordclouds:</p>
+                    <ul>
+                        <li>General Wordcloud, containing words deemed to be most relevant given the context of your search</li>
+                        <li>Reviews Wordcloud, containing words from the customer reviews that are most relevant to your search</li>
+                    </ul>
+                    <p class="smaller-text">Rather than complete sentences, your query should be based on keywords. <br> For example, to generate a wordcloud on installation, just search <em>installation</em></p>
+                </div>
+            </div>
+            <div class="form-container">
+                <form action="/dashboard" method="post">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Generate a wordcloud about:</span>
+                        <input type="text" class="form-control" placeholder="Search Query" name="wordcloudSearchQuery" autocomplete="off">
+                        <button class="btn btn-dark" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+            </div>
+
+            {% if wordcloud_search_query != "N/A": %}
+                {% if wordcloud_search_result != "Some word/words in your query were not present in even a single review": %}
+                    {% if wordcloud_search_result == "An error occurred! This is probably because there is not enough customer review data!": %}
+                        <h4>{{ wordcloud_search_result }}</h4>
+                    {% else: %}
+                        <h3>Your search query: {{ wordcloud_search_query }}</h3>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <h4>General Wordcloud</h4>
+                                <img class="wordcloud-img" src="{{ wordcloud_search_result[0] }}">
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <h4>Reviews Wordcloud</h4>
+                                <img class="wordcloud-img" src="{{ wordcloud_search_result[1] }}">
+                            </div>
+                        </div>
+                    {% endif %}
+                {% else: %}
+                    <p class="try-again-text">{{ wordcloud_search_result }}</p>
+                {% endif %}
+            {% endif %}
+        </div>
+    </section>
+    
+    <!-- Mindmap section -->
+    <section id="mindmap">
+        <div class="container">
+            <h1 class="section-header mindmap-title">Mindmap</h1>
+            <div class="card top-attributes-description-card">
+                <div class="card-body">
+                    A mindmap of some of the features customers care about the most mapped with products classified as good, bad, and neutral (for each of these features)
+                    <br><br>
+                    (A pictorial representation of customers' perception of different products on the market)
+                </div>
+            </div>
+            <img class="mindmap-img" src="../static/images/mindmap.png" alt="mindmap-image">
+        </div>
+    </section>
+
+
+    <!-- Footer section -->
+    <footer id="footer" class="colored-section">
+        <!-- <p class="footer-tagline">A TataDigital Tool</p> -->
+        <img class="footer-img" src="../static/images/TDL_Logo.png">
+        <br>
+        <p class="footer-credits">Developed by Karan Kashyap</p>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="../static/js/dashboard.js" charset="utf-8"></script> -->
+</body>
+
+</html>
